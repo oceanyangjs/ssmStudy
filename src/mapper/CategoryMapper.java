@@ -3,6 +3,7 @@ package mapper;
 import java.util.List;
 
 import pojo.Category;
+import util.Page;
 
 public interface CategoryMapper {
 	
@@ -14,7 +15,9 @@ public interface CategoryMapper {
 	
 	public void update(Category category);
 	
-	public int count();
-	
 	public List<Category> list();
+	
+	public int total();
+	
+	public List<Category> list(Page page);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import mapper.CategoryMapper;
 import pojo.Category;
 import service.CategoryService;
+import util.Page;
 
 @Controller
 @RequestMapping("")
@@ -18,9 +19,12 @@ public class CategoryController {
 	CategoryService categoryService;
 	
 	@RequestMapping("listCategory")
-	public ModelAndView listCategory() {
+	public ModelAndView listCategory(Page page) {
 		ModelAndView mav = new ModelAndView();
-		List<Category> cs = categoryService.list();
+		List<Category> cs = categoryService.list(page);
+		int total = categoryService.total();
+		
+		page.calculateLast(total);
 		mav.addObject("cs", cs);
 		mav.setViewName("listCategory");
 		return mav;
