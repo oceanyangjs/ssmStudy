@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getOneByAjax</title>
+<script src="jquery.min.js"></script>
+</head>
+<body>
+	<input type="button" value="通过ajax获得一个hero对象" id="sender">
+	<div id="messageDiv"></div>
+	<script>
+	$('#sender').click(function(){
+		var url = "getOneCategory";
+		$.post(url,function(data){
+			var json=JSON.parse(data); 
+            var name =json.category.name; 
+            var id = json.category.id;
+            $("#messageDiv").html("分类id:"+ id + "<br>分类名称:" +name );
+		});
+	});
+	</script>
+</body>
+</html>
